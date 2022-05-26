@@ -1,0 +1,103 @@
+
+<section class="src-components-formulario jumbotron" >
+  <h1 class="badge-success w-25 mx-auto">Formulario</h1> 
+  <vue-form class="my-5" :state="formstate" @submit.prevent="onSubmit">
+ 
+    <validate tag="div" class="d-flex justify-content-center flex-column w-50 mx-auto">
+      <!-- --   -->
+      <!-- Name -->
+      <!-- ---- -->
+      <label for="name">Name </label>
+      <input 
+        type="text"
+        id="name"
+        class="form-control"
+        name="name"
+        v-model.trim="model.name"
+        required 
+        :minlength="minLenghtName"
+        :maxlength="maxLenghtName"
+      />
+ 
+      <field-messages name="name" class="my-3">
+        <div slot="required" v-show="formstate.$submitted" class="alert-danger">Name is a required field</div>
+        <div slot="minlength" class="alert-danger">This field need have to have {{minLenghtName}} characters </div>
+      </field-messages>
+    </validate>
+
+    <!-- --   -->
+    <!-- Age  -->
+    <!-- ---- -->
+    <validate tag="div" class="d-flex justify-content-center flex-column flex-column w-50 mx-auto">
+      <label for="age">Age </label>
+      <input 
+        type="number"
+        id="age"
+        class="form-control"
+        name="age"
+        v-model.trim="model.age"
+        required 
+        :min="minAge"
+        :max="maxAge"
+      />
+ 
+      <field-messages name="age" class="my-3">
+        <div slot="required" v-show="formstate.$submitted" class="alert-danger">Age is a required field</div>
+        <div slot="min" class="alert-danger">The minimun age is {{minAge }}</div>
+        <div slot="max" class="alert-danger">The maximus age is {{maxAge }}</div>
+      </field-messages>
+    </validate>
+ 
+    <!-- --    -->
+    <!-- Email -->
+    <!-- ----  -->
+    <validate tag="div" class="d-flex justify-content-center flex-column flex-column w-50 mx-auto">
+      <label for="email">Email </label>
+      <input 
+        type="email"
+        id="email"
+        class="form-control"
+        name="email"
+        v-model.trim="model.email"
+        required
+      />
+ 
+      <field-messages name="email" class="my-3">
+        <div slot="required" v-show="formstate.$submitted" class="alert-danger" >Email is a required field</div>
+        <div slot="email" class="alert-danger">Email is not valid</div>
+      </field-messages>
+    </validate>
+ 
+
+    <!-- ------ -->
+    <!-- Submit -->
+    <!-- ------ -->
+    <button class="btn btn-danger my-3" :onSubmit.prevent="false" >Submit</button>
+  </vue-form>
+
+  <!-- --------------  -->
+  <!-- Table show data -->
+  <!-- -------------- -->
+  <section class="src-components-tabla jumbotron ">
+    <h1 class="badge-success w-25 mx-auto">Tabla</h1> 
+    <table class="table my-5">
+      <thead class="bg-white">
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody class="bg-light " v-for="(persona,index) in personas">
+        <tr>
+          <td>{{persona.name}}</td>
+          <td>{{persona.age}}</td>
+          <td>{{persona.email}}</td>
+        </tr>
+      </div>
+      </tbody>
+    </table>
+  </section>
+
+</section>
+

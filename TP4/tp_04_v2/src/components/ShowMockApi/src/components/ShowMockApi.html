@@ -1,0 +1,32 @@
+
+<section class="src-components-show-mock-api jumbotron">
+  <h1 class="h1 badge-dark w-50 mx-auto">Conection with Mock Api</h1>
+
+  <section class="src-components-tabla jumbotron ">
+    <h1 class="badge-success w-25 mx-auto">Information</h1> 
+    <table class="table my-5">
+      <thead class="bg-white">
+        <tr>
+          <th scope="col">Full Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Telephone</th>
+        </tr>
+      </thead>
+      <tbody class="bg-light" v-for="(persona,index) in info">
+        <tr >
+          <td scope="col">{{persona.name}}</td>
+          <td scope="col">{{persona.email}}</td>
+          <td scope="col">{{persona.telephone}}</td>
+        </tr>
+      </div>
+      </tbody>
+    </table>
+    <h4>Get data from API</h4>
+    <button class="btn btn-dark mr-3" @click="onSubmitAxios">Axios</button>
+    <button class="btn btn-dark mr-3" @click="onSubmitFetch">Fetch</button>
+    <button class="btn btn-dark mr-3" @click="onSubmitXMLH">XMLHttpRequest</button>
+    <button class="btn btn-dark" @click="clearInfo">Clear</button>
+  </section>
+
+</section>
+
